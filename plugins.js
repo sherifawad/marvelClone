@@ -12,7 +12,7 @@ const _CompressionWebpackPlugin = require("compression-webpack-plugin");
 
 const htmlWebpackPlugin = ({ env }) => {
 	const result = new _HtmlWebpackPlugin({
-		template: path.resolve(__dirname, "./src", "index.html"),
+		template: path.resolve(__dirname, "./src/public", "index.html"),
 		minify:
 			env === "production" ? { removeAttributeQuotes: true, collapseWhitespace: true, removeComments: true } : {}
 	});
@@ -40,7 +40,7 @@ const htmlWebpackPluginpages = ({ env = "production", pages, commonChunks = [] }
 			new _HtmlWebpackPlugin({
 				// inject: true,
 				inject: "body",
-				template: path.resolve(__dirname, "./src", `${page}.html`),
+				template: path.resolve(__dirname, "./src/public", `${page}.html`),
 				filename: `${page}.html`,
 				chunks: [`${page}`, ...commonChunks],
 				minify:
