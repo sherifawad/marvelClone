@@ -1,10 +1,14 @@
 module.exports = {
+	// processors: ["stylelint-processor-styled-components"],
 	plugins: ["stylelint-scss", "stylelint-order", "stylelint-prettier"],
 	syntax: "scss",
 	extends: [
+		"stylelint-config-recommended",
 		"stylelint-config-standard",
 		"stylelint-prettier/recommended",
 		"stylelint-config-prettier",
+		// "stylelint-config-styled-components"
+		"@linaria/stylelint"
 	],
 	customSyntax: "postcss-scss",
 	rules: {
@@ -20,7 +24,6 @@ module.exports = {
 		"declaration-block-no-duplicate-properties": true,
 		"declaration-block-no-shorthand-property-overrides": true,
 		"block-no-empty": true,
-		"selector-pseudo-class-no-unknown": true,
 		"selector-pseudo-element-no-unknown": true,
 		"selector-type-no-unknown": true,
 		"media-feature-name-no-unknown": true,
@@ -37,9 +40,9 @@ module.exports = {
 					"media",
 					"keyframes",
 					"supports",
-					"font-face",
-				],
-			},
+					"font-face"
+				]
+			}
 		],
 		"comment-no-empty": true,
 		"no-descending-specificity": true,
@@ -61,8 +64,8 @@ module.exports = {
 		"selector-no-qualifying-type": [
 			true,
 			{
-				ignore: ["attribute"],
-			},
+				ignore: ["attribute"]
+			}
 		],
 		"selector-no-vendor-prefix": true,
 		"at-rule-no-vendor-prefix": true,
@@ -73,8 +76,8 @@ module.exports = {
 		"font-weight-notation": [
 			"named-where-possible",
 			{
-				ignore: ["relative"],
-			},
+				ignore: ["relative"]
+			}
 		],
 		"function-comma-newline-after": "never-multi-line",
 		"function-comma-newline-before": "never-multi-line",
@@ -102,8 +105,8 @@ module.exports = {
 			"^[a-z0-9\\-]+$|^[a-zA-Z0-9]+$",
 			{
 				message:
-					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)",
-			},
+					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)"
+			}
 		],
 		"property-case": "lower",
 		"declaration-bang-space-after": "never",
@@ -121,8 +124,8 @@ module.exports = {
 		"block-closing-brace-newline-after": [
 			"always",
 			{
-				ignoreAtRules: ["if", "else if", "else"],
-			},
+				ignoreAtRules: ["if", "else if", "else"]
+			}
 		],
 		"block-closing-brace-newline-before": "always-multi-line",
 		"block-closing-brace-space-after": "always-single-line",
@@ -143,22 +146,22 @@ module.exports = {
 			"^[a-z0-9\\-]+$|^[a-zA-Z0-9]+$",
 			{
 				message:
-					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)",
-			},
+					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)"
+			}
 		],
 		"selector-class-pattern": [
 			"^[a-z0-9\\-]+$|^[a-zA-Z0-9]+$",
 			{
 				message:
-					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)",
-			},
+					"Selector should be written in lowercase-with-hyphens, or camelCase for scss modules (selector-class-pattern)"
+			}
 		],
 		"indentation": "tab",
 		"max-nesting-depth": [
 			5,
 			{
-				ignoreAtRules: ["media", "supports", "include"],
-			},
+				ignoreAtRules: ["media", "supports", "include"]
+			}
 		],
 		"order/properties-alphabetical-order": null,
 		"scss/at-extend-no-missing-placeholder": null,
@@ -172,8 +175,8 @@ module.exports = {
 		"rule-empty-line-before": [
 			"always-multi-line",
 			{
-				except: ["after-single-line-comment", "first-nested"],
-			},
+				except: ["after-single-line-comment", "first-nested"]
+			}
 		],
 		"media-feature-colon-space-after": "always",
 		"media-feature-colon-space-before": "never",
@@ -188,23 +191,10 @@ module.exports = {
 		"at-rule-empty-line-before": [
 			"always",
 			{
-				except: [
-					"blockless-after-same-name-blockless",
-					"blockless-after-blockless",
-					"first-nested",
-				],
+				except: ["blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested"],
 				ignore: ["after-comment"],
-				ignoreAtRules: [
-					"if",
-					"else if",
-					"else",
-					"return",
-					"each",
-					"mixin",
-					"import",
-					"include",
-				],
-			},
+				ignoreAtRules: ["if", "else if", "else", "return", "each", "mixin", "import", "include"]
+			}
 		],
 		"at-rule-name-case": "lower",
 		"at-rule-name-newline-after": null,
@@ -215,59 +205,36 @@ module.exports = {
 			"always",
 			{
 				except: ["first-nested"],
-				ignore: ["after-comment"],
-			},
+				ignore: ["after-comment"]
+			}
 		],
 		"comment-whitespace-inside": "always",
 		"linebreaks": "unix",
 		"max-empty-lines": 1,
 		"no-eol-whitespace": true,
 		"no-missing-end-of-source-newline": true,
-		/*A JavaScript comment of
-		 *  //prettier-ignore
-		 *will exclude the next node in the abstract syntax tree from formatting.
-		 */
-		"prettier/prettier": [
+		"selector-pseudo-class-no-unknown": [
 			true,
 			{
-				// eslintIntegration: true,
-				// tslintIntegration: true,
-				// stylelintIntegration: true,
-				trailingComma: "es5",
-				singleQuote: false,
-				semi: true,
-				endOfLine: "auto",
-				useTabs: true,
-				tabWidth: 4,
-				quoteProps: "consistent",
-				jsxSingleQuote: false,
-				// trailingComma: "all",
-				bracketSpacing: true,
-				arrowParens: "avoid",
-				proseWrap: "always",
-
-				// quoteProps: 'as-needed'
-				// proseWrap: 'preserve', // markdown wrap
-				htmlWhitespaceSensitivity: "css",
-				vueIndentScriptAndStyle: false,
-				embeddedLanguageFormatting: "auto",
-			},
-		],
+				ignorePseudoClasses: ["global"]
+			}
+		]
 	},
 	overrides: [
 		{
-			files: ["../src//**/*.scss"],
+			files: ["./src//**/*.scss"],
 			rules: {
 				"at-rule-no-unknown": null,
 				"scss/at-rule-no-unknown": true,
-				"no-empty-source": null,
-			},
+				"no-empty-source": null
+			}
 		},
 		{
-			files: ["../src//**/_root.scss"],
+			files: ["./src//**/_root.scss"],
 			rules: {
-				"custom-property-pattern": null,
-			},
-		},
+				"custom-property-pattern": null
+			}
+		}
 	],
+	ignoreFiles: ["./dist/**"]
 };

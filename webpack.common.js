@@ -16,23 +16,24 @@ const _plugins = [
 	// plugins.htmlWebpackPlugin({ env: mode }),
 	plugins.ESLintPlugin,
 	plugins.StyleLintPlugin,
-	plugins.miniCssExtractPlugin({ env: mode }),
+	plugins.miniCssExtractPlugin({ env: mode })
 ];
 
-if (process.env.SERVE) {
-	// We only want React Hot Reloading in serve mode
-	_plugins.push(plugins.ReactRefreshWebpackPlugin);
-}
+// // Confirmed @linaria/shake@3.0.0-beta.4 is last working version. beta.5 breaks.
+// if (process.env.SERVE) {
+// 	// We only want React Hot Reloading in serve mode
+// 	_plugins.push(plugins.ReactRefreshWebpackPlugin);
+// }
 
 // multi page array names without extensions and js file same as html files
 const pages = ["index"];
 const commonChunks = [];
 let scripts = pages.reduce((config, page) => {
-	config[page] = path.join(__dirname, "../src", "js", `${page}.js`);
+	config[page] = path.join(__dirname, "./src", "js", `${page}.js`);
 	return config;
 }, {});
 let commonScripts = commonChunks.reduce((config, chunk) => {
-	config[chunk] = path.join(__dirname, "../src", "js", `${chunk}.js`);
+	config[chunk] = path.join(__dirname, "./src", "js", `${chunk}.js`);
 	return config;
 }, {});
 module.exports = {
@@ -43,29 +44,39 @@ module.exports = {
 	//   index: path.join(__dirname, "../src", "js", "index"),
 	// },
 	entry: { ...commonScripts, ...scripts },
-	optimization: {
-		splitChunks: {
-			chunks: "all",
-		},
+	output: {
+		path: path.resolve(__dirname, "./dist"),
+		publicPath: "/",
+		filename: "js/[name].[contenthash:6].bundle.js",
+		assetModuleFilename: "assets/[hash][ext]",
+		clean: true
 	},
+	cache: {
+		type: "filesystem" // memory: use content cache filesystem: use file cache
+	},
+	devtool: false,
+	// optimization: {
+	// 	splitChunks: {
+	// 		chunks: "all"
+	// 	}
+	// },
 	module: {
 		rules: [
 			loaders.HTMLLoader,
-			loaders.JSLoader,
-			loaders.cssLoader,
-			loaders.Imageloader,
-		],
+			loaders.jSLoader({ env: mode }),
+			loaders.cssLoader({ env: mode }),
+			loaders.Imageloader
+		]
 	},
 	plugins: _plugins.concat(
 		plugins.htmlWebpackPluginpages({
 			env: mode,
 			pages: pages,
-			commonChunks: commonChunks,
+			commonChunks: commonChunks
 		})
 	),
-	devtool: mode === "production" ? "source-map" : "eval-source-map",
 	// target: target,
 	resolve: {
-		extensions: [".scss", ".json", ".js", ".jsx"],
-	},
+		extensions: [".js", ".jsx"]
+	}
 };
