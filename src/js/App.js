@@ -3,6 +3,7 @@
 // import AboutPage from "../pages/AboutPage";
 // import Header from "../components/Header";
 import React from "react";
+import "../styles";
 import { Loading } from "../components/Loading";
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
 	// 		<Route path="/about" element={<AboutPage />} />
 	// 	</Routes>
 	// </Router>
+
 	<Loading />
 );
 
