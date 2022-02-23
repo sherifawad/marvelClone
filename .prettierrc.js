@@ -13,7 +13,7 @@ module.exports = {
 	bracketSpacing: true,
 	arrowParens: "avoid",
 	proseWrap: "always",
-	printWidth: 120,
+	printWidth: 80,
 
 	// quoteProps: 'as-needed'
 	// proseWrap: 'preserve', // markdown wrap

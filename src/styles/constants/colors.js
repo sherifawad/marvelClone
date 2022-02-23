@@ -30,7 +30,13 @@ const colors = {
 
 	snow: (opacity = 1) => `rgba(249, 249, 249, ${opacity})`, // #F9F9F9
 
-	white: (opacity = 1) => `rgba(255, 255, 255, ${opacity})` // #FFFFFF
+	white: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`, // #FFFFFF
+	liteBlack: (opacity = 1) => `rgba(32, 32, 32, ${opacity})`, // #202020
+	dark: (opacity = 1) => `rgba(21, 21, 21, ${opacity})`, // #151515
+
+	primaryColor: (opacity = 1) => `rgba(55, 57, 149, ${opacity})`, // #373995
+	secondaryColor: (opacity = 1) => `rgba(254, 242, 0, ${opacity})`, // #fef200
+	grayColor: (opacity = 1) => `rgba(212, 212, 212), ${opacity})` // #d4d4d4
 };
 
 export default colors;

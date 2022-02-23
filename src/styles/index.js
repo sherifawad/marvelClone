@@ -1,2 +1,2 @@
 import "./base/reset";
-import "./base/general";
+import "./base/globals";

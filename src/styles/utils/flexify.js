@@ -8,7 +8,6 @@ const defaultFlex = {
 
 const flexify = (customFlex = {}) => {
 	const flex = { ...defaultFlex, ...customFlex };
-
 	return css`
 		display: flex;
 		justify-content: ${flex.justifyContent};

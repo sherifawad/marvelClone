@@ -5,8 +5,9 @@ import { StateProvider } from "./StateProvider";
 import reducer, { initialState } from "./reducer";
 
 render(
-	<StateProvider initialState={initialState} reducer={reducer}>
+	<StateProvider initialState={initialState()} reducer={reducer}>
 		<App />
 	</StateProvider>,
 	document.getElementById("root")
 );
+export { globals } from "../styles/base/globals";

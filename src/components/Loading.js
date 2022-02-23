@@ -25,6 +25,7 @@ export const Loading = () => {
 				{!user && <button onClick={loginToApp}>Log In</button>}
 				{user && <button onClick={logOut}>Log Out</button>}
 			</div>
+            
 			{/* <Page>Loading...</Page> */}
 		</>
 	);

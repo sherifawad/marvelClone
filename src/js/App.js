@@ -3,8 +3,16 @@
 // import AboutPage from "../pages/AboutPage";
 // import Header from "../components/Header";
 import React from "react";
-import "../styles";
-import { Loading } from "../components/Loading";
+// import Carousel from "../components/Carousel";
+// import "../styles";
+// import { Loading } from "../components/Loading";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import HeroSlider from "../components/HeroSlider";
+// import MultiCarousel from "../components/MultiCarousel";
+// import MultiCarouselWithScroll from "../components/MultiCarouselWithScroll";
+import ScrollSection from "../components/ScrollSection";
+import colors from "../styles/constants/colors";
 
 const App = () => (
 	// <Router>
@@ -24,7 +32,35 @@ const App = () => (
 	// 	</Routes>
 	// </Router>
 
-	<Loading />
+	// <Loading />
+	<>
+		<Header />
+		{/* <Carousel /> */}
+		{/* <MultiCarousel /> */}
+		<HeroSlider />
+		<Hero
+			btns={[
+				{
+					text: "Learn More",
+					link: "http",
+					textColor: colors.white(),
+					btnBackColor: colors.white(),
+					btnBorderColor: colors.white(),
+					light: true
+				},
+				{
+					text: "Watch Now",
+					link: "http",
+					textColor: colors.white(),
+					btnBackColor: colors.white(),
+					btnBorderColor: colors.white(),
+					light: true
+				}
+			]}
+		/>
+		<ScrollSection />
+		{/* <MultiCarouselWithScroll /> */}
+	</>
 );
 
 export default App;
